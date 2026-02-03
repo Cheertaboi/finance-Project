@@ -1,3 +1,5 @@
+Deployed on Railway.app finance-project.railway.internal
+
 A minimal, production-oriented Expense Tracker that allows users to record, view, filter, and analyze personal expenses.
 Built with Go (Gin) for the backend and a simple static frontend served from the same backend.
 
@@ -219,7 +221,8 @@ http://localhost:8080
 
 Dockerized Go application
 
-Designed to be deployed as a single service
+<img width="1768" height="726" alt="image" src="https://github.com/user-attachments/assets/10e306e9-2287-4a02-97de-fe45df06e96e" />
+
 
 Successfully deployable on platforms like Railway
 
