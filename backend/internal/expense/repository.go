@@ -67,8 +67,7 @@ func (r *Repository) List(category string) ([]Expense, error) {
 		return nil, err
 	}
 	defer rows.Close()
-
-	var expenses []Expense
+	expenses := make([]Expense, 0)
 	for rows.Next() {
 		var e Expense
 		rows.Scan(

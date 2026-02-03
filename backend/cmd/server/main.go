@@ -1,12 +1,12 @@
 package main
 
 import (
-	"log"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/harsh/finance-project/backend/internal/db"
-	"github.com/harsh/finance-project/backend/internal/expense"
+	"github.com/Cheertaboi/finance-Project/backend/internal/db"
+	"github.com/Cheertaboi/finance-Project/backend/internal/expense"
 )
 
 func main() {
@@ -16,9 +16,27 @@ func main() {
 	handler := expense.NewHandler(repo)
 
 	r := gin.Default()
+
+	// -------- API ROUTES --------
 	r.POST("/expenses", handler.CreateExpense)
 	r.GET("/expenses", handler.ListExpenses)
 
-	log.Println("Server running on :8080")
+	// -------- FRONTEND --------
+	// Resolve static directory correctly
+	staticDir, _ := filepath.Abs("../../static")
+
+	// Serve JS/CSS
+	r.Static("/static", staticDir)
+
+	// Serve index.html
+	r.GET("/", func(c *gin.Context) {
+		c.File(staticDir + "/index.html")
+	})
+
+	// Fallback (refresh-safe)
+	r.NoRoute(func(c *gin.Context) {
+		c.File(staticDir + "/index.html")
+	})
+
 	r.Run(":8080")
 }

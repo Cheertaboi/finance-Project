@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expense Tracker</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 900px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    input, button, select {
+      padding: 6px;
+      margin: 6px 6px 6px 0;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    .error {
+      color: red;
+    }
+
+    .loading {
+      color: blue;
+    }
+
+    /* ---- CATEGORY FILTER UI FIX ---- */
+    .filter-container {
+      position: relative;
+      width: 250px;
+    }
+
+    #filterInput {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #categoryDropdown {
+      position: absolute;
+      top: 34px;
+      width: 100%;
+      display: none;              /* ✅ hidden by default */
+      border: 1px solid #ccc;
+      background: #fff;
+      max-height: 150px;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    #categoryDropdown option {
+      padding: 6px;
+      cursor: pointer;
+    }
+
+    #categoryDropdown option:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* ---- ONE LINE FILTER BAR ---- */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-row label {
+  font-weight: bold;
+}
+
+.filter-container {
+  position: relative;
+  width: 220px;
+}
+
+#filterInput {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#categoryDropdown {
+  position: absolute;
+  top: 34px;
+  width: 100%;
+  display: none;
+  border: 1px solid #ccc;
+  background: #fff;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+  </style>
+</head>
+<body>
+
+  <h2>Add Expense</h2>
+
+  <div>
+    <input id="amount" type="number" placeholder="Amount (₹)" />
+    <input id="category" placeholder="Category *" />
+    <input id="description" placeholder="Description" />
+    <input id="date" type="date" />
+    <button id="submitBtn" onclick="addExpense()">Add</button>
+  </div>
+
+  <p id="status"></p>
+
+  <hr />
+
+  <h2>Expenses</h2>
+<h2>Expenses</h2>
+
+<div class="filter-row">
+  <label>Filter:</label>
+
+  <div class="filter-container">
+    <input
+      id="filterInput"
+      placeholder="Search category..."
+      oninput="onFilterInput()"
+    />
+
+    <select
+      id="categoryDropdown"
+      size="5"
+      onchange="onCategorySelect()">
+    </select>
+  </div>
+
+  <button onclick="clearFilter()">Clear</button>
+  <button onclick="toggleSort()">Sort by date</button>
+</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Amount (₹)</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="expenseTable"></tbody>
+  </table>
+
+  <h3 id="total"></h3>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
