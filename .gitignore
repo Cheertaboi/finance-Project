@@ -1,0 +1,16 @@
+# Database
+expense.db
+
+# Go binaries
+*.exe
+
+# Go dependencies
+vendor/
+
+# Environment variables
+.env
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
