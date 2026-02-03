@@ -224,5 +224,4 @@ Dockerized Go application
 <img width="1768" height="726" alt="image" src="https://github.com/user-attachments/assets/10e306e9-2287-4a02-97de-fe45df06e96e" />
 
 
-Successfully deployable on platforms like Railway
 
